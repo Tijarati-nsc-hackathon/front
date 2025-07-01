@@ -2,7 +2,7 @@
 .login-page {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 110vh;
   background: #FFFFFF;
   overflow-y: hidden;
 }
@@ -24,7 +24,7 @@
 .login-card {
   position: absolute;
   width: 538px;
-  min-height: 604.71px; /* Changed from fixed height to min-height */
+  /* min-height: 5000vh; */
   height: auto; /* Allow height to grow */
   left: 50%;
   top: 50%;
@@ -35,8 +35,7 @@
   box-sizing: border-box;
   padding: 40px;
   z-index: 10;
-  max-height: 90vh; /* Prevent card from being too tall */
-  overflow-y: auto; /* Add scroll if needed */
+  overflow-y: hidden; /* Add scroll if needed */
 }
 
 .login-card h2 {

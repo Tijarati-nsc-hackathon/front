@@ -1,10 +1,16 @@
 import React from "react";
 import "./footer.css";
+import logo from '../assets/logos/logo.png'
 
 const Footer = () => (
   <footer className="footer">
     {/* 1280-px wide centred container */}
     <div className="footer-inner">
+      {/* Logo Section */}
+      <div className="footer-logo">
+        <img src={logo} alt="Logo" className="footer-logo-image" />
+      </div>
+
       <div className="footer-column">
         <h4>Support</h4>
         <ul>

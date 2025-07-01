@@ -14,17 +14,44 @@
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 3rem;
+  padding: 1rem 0;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  gap: 12rem;
+  min-height: 80px;
+}
+
+/* Logo Section */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-left: 3rem;
+}
+
+.logo-image {
+  position: absolute;
+  height: 150px;
+  width: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  top: -1px;
+  left: 20px;
+}
+
+.logo-image:hover {
+  opacity: 0.8;
 }
 
 .navbar-links {
   display: flex;
   gap: 3rem;
   align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .navbar-link {
@@ -53,6 +80,8 @@
   display: flex;
   gap: 1.5rem;
   align-items: center;
+  flex-shrink: 0;
+  padding-right: 3rem;
 }
 
 .navbar-login {
@@ -111,6 +140,10 @@
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
   }
+
+  .logo-image {
+    height: 50px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -119,6 +152,10 @@
   }
 
   .navbar-container {
-    justify-content: flex-end;
+    justify-content: space-between;
+  }
+
+  .logo-image {
+    height: 45px;
   }
 }

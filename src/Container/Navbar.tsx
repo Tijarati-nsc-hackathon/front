@@ -2,6 +2,7 @@ import React from 'react';
 import './Navbar.css';
 import { useScroll } from '../Context/ScrollContext.tsx';
 import { Link } from 'react-router-dom'; // Keep Link for Login/Signup
+import logo from '../Components/assets/logos/logo.png'
 
 const Navbar: React.FC = () => {
   const { scrollTo } = useScroll();
@@ -9,6 +10,11 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
+        {/* Logo Section */}
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" className="logo-image" />
+        </div>
+
         <div className="navbar-links">
           <button onClick={() => scrollTo('home')} className="navbar-link">Home</button>
           <button onClick={() => scrollTo('support')} className="navbar-link">Support</button>
