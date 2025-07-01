@@ -27,11 +27,10 @@ uix figma :https://www.figma.com/design/Uirx0Fy6MQcOWhhQlltPkZ/Tejarati?node-id=
 | Layer       | Technology     |
 | ----------- | -------------- |
 | UI Framework | React 18.x     |
-| Styling      | Tailwind CSS  |
 | Routing      | React Router  |
 | State Mgmt   | Context API / Redux (optional) |
 | Auth         | JWT + Axios interceptors |
-| Charts       | Recharts.js / Chart.js |
+| Charts       | Recharts.js  |
 | HTTP         | Axios         |
 | Form         | React Hook Form |
 | Backend API  | NestJS @  |
