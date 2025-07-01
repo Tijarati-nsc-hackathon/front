@@ -9,11 +9,11 @@ interface SummaryResponse {
 }
 
 const Dash: React.FC = () => {
-  const shopId = '1'; 
+  const shopId = '920046e6-be39-408b-9742-b783dc71ee2b'; 
   
   const { data: summaryData, isLoading, error } = useApiQuery<SummaryResponse>(
     ['summary', shopId],
-    `summary/${shopId}`
+    `analytics/summary/${shopId}`
   );
 
   if (isLoading) {
