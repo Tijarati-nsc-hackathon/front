@@ -1,9 +1,8 @@
-import axios from 'axios';
-import { useUserStore } from '../store/user.store.ts';
-import { serialize } from 'cookie';
+import axios from "axios";
+import { useUserStore } from "../store/user.store.ts";
+import { serialize } from "cookie";
 
 export const baseUrl = import.meta.env.VITE_BASE_URL;
-
 
 /**
  * Clears both access and refresh tokens from cookies
@@ -12,32 +11,34 @@ export const baseUrl = import.meta.env.VITE_BASE_URL;
 export const clearAuthTokens = (): void => {
   const cookieOptions = {
     httpOnly: false,
-    path: '/',
+    path: "/",
     expires: new Date(0),
   };
 
-  document.cookie = serialize('accessToken', '', cookieOptions);
-  document.cookie = serialize('refreshToken', '', cookieOptions);
+  document.cookie = serialize("accessToken", "", cookieOptions);
+  document.cookie = serialize("refreshToken", "", cookieOptions);
 
-  delete instance.defaults.headers.common['Authorization'];
+  delete instance.defaults.headers.common["Authorization"];
 };
+
 
 const instance = axios.create({
   baseURL: baseUrl,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true",
   },
 });
 
 instance.interceptors.request.use(
   (request) => {
     const accessToken = document.cookie
-      .split('; ')
-      .find((cookie) => cookie.startsWith('accessToken='))
-      ?.split('=')[1];
+      .split("; ")
+      .find((cookie) => cookie.startsWith("accessToken="))
+      ?.split("=")[1];
 
     if (accessToken) {
-      request.headers['Authorization'] = `Bearer ${accessToken}`;
+      request.headers["Authorization"] = `Bearer ${accessToken}`;
     }
     return request;
   },
@@ -54,9 +55,9 @@ instance.interceptors.response.use(
 
       try {
         const refreshToken = document.cookie
-          .split('; ')
-          .find((cookie) => cookie.startsWith('refreshToken='))
-          ?.split('=')[1];
+          .split("; ")
+          .find((cookie) => cookie.startsWith("refreshToken="))
+          ?.split("=")[1];
 
         if (!refreshToken) {
           clearAuthTokens();
@@ -64,7 +65,7 @@ instance.interceptors.response.use(
           return Promise.reject(error);
         }
 
-        const response = await instance.post('/auth/refresh', {
+        const response = await instance.post("/auth/refresh", {
           refresh: refreshToken,
         });
         const { access: newAccessToken, refresh: newRefreshToken } =
@@ -76,21 +77,22 @@ instance.interceptors.response.use(
           return Promise.reject(error);
         }
 
-        document.cookie = serialize('accessToken', newAccessToken, {
+        document.cookie = serialize("accessToken", newAccessToken, {
           httpOnly: false,
-          path: '/',
+          path: "/",
           expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
         });
 
         if (newRefreshToken) {
-          document.cookie = serialize('refreshToken', newRefreshToken, {
+          document.cookie = serialize("refreshToken", newRefreshToken, {
             httpOnly: false,
-            path: '/',
+            path: "/",
             expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
           });
         }
-        instance.defaults.headers.common['Authorization'] =
-          `Bearer ${newAccessToken}`;
+        instance.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${newAccessToken}`;
 
         return instance(originalRequest);
       } catch (refreshError) {

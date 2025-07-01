@@ -1,12 +1,16 @@
-export const riskData = [
-  { label: "High Risk", value: 25, color: "#4C78FF" },
-  { label: "Low Risk", value: 35, color: "#16DBCC" },
-  { label: "Medium Risk", value: 20, color: "#FFBB38" },
-  { label: "Critical Risk", value: 20, color: "#FF82AC" },
-]
 
-export const clients = [
-  { name: "Benammour Rihab Meriem", device: "Smartwatch DZ+", risk: "High Risk", riskColor: "#FF4444" },
-  { name: "Benammour Rihab Meriem", device: "Smartwatch DZ+", risk: "Low Risk", riskColor: "#22C55E" },
-  { name: "Benammour Rihab Meriem", device: "Smartwatch DZ+", risk: "Medium Risk", riskColor: "#FFBB38" },
-]
+export const clients: Client[] = [
+  { id: "1", name: "Benammour Rihab Meriem", device: "Smartwatch DZ+", riskLevel: "high" },
+  { id: "2", name: "Ahmed Ben Ali",          device: "Smartwatch DZ+", riskLevel: "low"  },
+  { id: "3", name: "Sara Khaled",            device: "Smartwatch DZ+", riskLevel: "medium" },
+  { id: "4", name: "Mohamed Taha",           device: "Smartwatch DZ+", riskLevel: "high" },
+  { id: "5", name: "Fatima Zahra",           device: "Smartwatch DZ+", riskLevel: "low"  },
+  { id: "6", name: "Youssef Omar",           device: "Smartwatch DZ+", riskLevel: "medium" },
+];
+
+export const riskData: RiskData = {
+  high: 2,
+  medium: 2,
+  low: 2,
+  total: 6
+};

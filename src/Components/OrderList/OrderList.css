@@ -167,3 +167,71 @@
         padding: 0.2rem 0.4rem;
     }
 }
+/* Header container to align title and button */
+.last-orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Button styling with #6DD130 color */
+.add-order-btn {
+  background-color: #6DD130;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.add-order-btn:hover {
+  background-color: #5BC428;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(109, 209, 48, 0.3);
+}
+
+.add-order-btn:active {
+  transform: translateY(0);
+  background-color: #52B024;
+}
+
+/* WhatsApp button styling */
+.whatsapp-btn {
+  background-color: #6DD130;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.whatsapp-btn:hover {
+  background-color: #5BC428;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(109, 209, 48, 0.3);
+}
+
+.whatsapp-btn:active {
+  transform: translateY(0);
+  background-color: #52B024;
+}
+
+.whatsapp-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
