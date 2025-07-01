@@ -1,70 +1,38 @@
-# React + TypeScript + Vite
+# Tijarati – Frontend (React + vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Tijarati** is a modern frontend interface for Algeria’s smart e-commerce platform. It supports sellers and admins with tools to manage shops, products, orders, payments, and customer risk – with full AI & analytics support.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Key Features
 
-## Expanding the ESLint configuration
+| Module | Description |
+| ------ | ----------- |
+| **Authentication** | Login with JWT tokens stored securely (access + refresh rotation) |
+| **RBAC UI** | Dynamic UI based on role: *Admin* (platform owner), *Manager* (shop owner) |
+| **Shops & Products** | Full CRUD for shop info, product listings, and inventory status |
+| **Order Flow** | Visual flow for order status updates: pending → paid → delivered → returned |
+| **Returns Panel** | Approve or reject customer return requests directly from dashboard |
+| **AI Risk Badge** | Orders labeled with AI risk levels (Low, Medium, High, Critical) using backend API |
+| **Chatbot** | Smart product/ordering chatbot using RAG (Retrieval-Augmented Generation) |
+| **Analytics** | Charts for revenue, return rates, risky orders – via  endpoints |
+| **Mobile-Friendly** | Fully responsive UI (Tailwind CSS + Headless UI) |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+uix figma :https://www.figma.com/design/Uirx0Fy6MQcOWhhQlltPkZ/Tejarati?node-id=93-627&t=QNglV1uY5k8j92DZ-0
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🏗️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Layer       | Technology     |
+| ----------- | -------------- |
+| Routing      | React Router  |
+| State Mgmt   | Context API / Redux (optional) |
+| Auth         | JWT + Axios interceptors |
+| Charts       | Recharts.js  |
+| HTTP         | Axios         |
+| Form         | React Hook Form |
+| Backend API  | NestJS @  |
+| Chatbot API  | Flask AI RAG service |
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-# nsc-front
