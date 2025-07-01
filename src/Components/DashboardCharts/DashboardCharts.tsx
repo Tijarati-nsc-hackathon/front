@@ -3,17 +3,14 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   BarChart, Bar, Cell
 } from 'recharts'; 
-import { ordersData, returnRateData } from './ChartData.tsx'; 
-import { useApiQuery } from '../../api/useApiCall'; // Adjust path if needed
+import { ordersData, returnRateData } from './ChartData'; 
+import { useApiQuery } from '../../api/useApiCall'; 
 
-// Define the type for the API response
 type OrderOverTime = { name: string; orders: number };
 
 const DashboardCharts: React.FC = () => {
-  // Replace with actual shopId from your app's state/store/context
   const shopId = '920046e6-be39-408b-9742-b783dc71ee2b';
 
-  // Fetch data from the API
   const { data: ordersData, isLoading, error } = useApiQuery<OrderOverTime[]>(
     ['order-over-time', shopId],
     `analytics/order-over-time/${shopId}`
