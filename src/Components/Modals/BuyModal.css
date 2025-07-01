@@ -1,0 +1,185 @@
+/* BuyModal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.buy-modal {
+  width: 580px; /* Adjusted width to match image perception */
+  /* Height is dynamic based on content now, or set if fixed needed */
+  /* height: 610px; */ /* Removed fixed height for flexibility if content changes */
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  /* gap: 16px; This gap is for the main sections, managed by margins below */
+  box-sizing: border-box;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666; /* Slightly darker close icon */
+}
+
+/* --- NEW / MODIFIED MODAL TAB STYLES --- */
+.modal-tab-container {
+    display: flex;
+    align-items: flex-end; /* Align to the bottom to make the underline look correct */
+    gap: 8px; /* Small gap between the tab and the '...' section */
+    margin-bottom: 20px; /* Space below the tab container */
+    border-bottom: 1px solid #e5e7eb; /* Light grey bottom border for the whole tab area */
+    padding-bottom: 0px; /* No padding on the bottom of the container itself */
+}
+
+.modal-tab {
+  display: flex;
+  align-items: center;
+  /* border: 2px solid #facc15; Removed full border */
+  border-radius: 8px 8px 0 0; /* Rounded top corners, sharp bottom */
+  /* padding: 10px 16px; This padding will be adjusted within the icon wrapper and text */
+  gap: 8px; /* Gap between icon and text */
+  color: #facc15;
+  font-weight: 600;
+  font-size: 15px;
+  padding-bottom: 8px; /* Padding for the yellow underline effect */
+  position: relative; /* For the yellow underline */
+  flex-shrink: 0; /* Prevent this tab from shrinking */
+}
+
+.modal-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; /* Position it exactly on the border */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Thickness of the yellow line */
+  background-color: #facc15; /* Yellow line color */
+  border-radius: 2px;
+}
+
+.modal-tab-icon-wrapper {
+  background-color: #fff9e6; /* Very light yellow background for the icon */
+  padding: 6px; /* Padding around the icon */
+  border-radius: 6px; /* Slightly rounded corners for the icon background */
+  display: flex; /* To center the icon */
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-tab-icon {
+  color: #facc15; /* Icon color */
+  font-size: 18px; /* Size for lucide-react icon */
+}
+
+.modal-tab-separator {
+    flex-grow: 1; /* Makes this div take up remaining space */
+    border-bottom: 1px solid #e5e7eb; /* Continuation of the grey border */
+    height: 15px; /* Adjust height to align with the tab's baseline */
+    margin-left: 0px; /* Ensure no extra space */
+    margin-right: 8px; /* Space before '...' */
+}
+
+.modal-other-tabs {
+    font-size: 18px; /* Size for '...' */
+    color: #9ca3af; /* Grey color for '...' */
+    margin-bottom: 5px; /* Align '...' vertically */
+    flex-shrink: 0;
+}
+
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* margin-top: 12px; Removed as gap from modal-tab-container handles spacing */
+}
+
+.modal-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500; /* Add some weight to labels */
+}
+
+.modal-form input,
+.modal-form select {
+  padding: 10px 14px;
+  margin-top: 4px; /* Reduced margin-top for tighter spacing */
+  border: 1px solid #d1d5db; /* Lighter border color */
+  border-radius: 8px;
+  font-size: 14px;
+  color: #374151; /* Default text color in inputs */
+}
+
+.modal-form input::placeholder {
+  color: #9ca3af; /* Placeholder color */
+}
+
+.modal-row {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-row label {
+  flex: 1;
+}
+
+.modal-send {
+  margin-top: 24px; /* Added more space above the button */
+  background-color: #facc15; /* Main yellow color */
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px; /* Slightly more rounded */
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 4px 10px rgba(250, 204, 21, 0.2); /* Subtle shadow for depth */
+}
+
+.modal-send:hover {
+  background-color: #eab308; /* Darker yellow on hover */
+  box-shadow: 0 6px 15px rgba(250, 204, 21, 0.3);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .buy-modal {
+    width: 95%; /* Make modal almost full width on small screens */
+    padding: 16px;
+  }
+  .modal-row {
+    flex-direction: column; /* Stack country and postal code on small screens */
+    gap: 16px;
+  }
+  .modal-tab-container {
+      flex-wrap: wrap; /* Allow tab items to wrap */
+      justify-content: center; /* Center them if they wrap */
+  }
+  .modal-tab-separator {
+      display: none; /* Hide separator on very small screens if tabs wrap */
+  }
+  .modal-other-tabs {
+      flex-basis: 100%; /* Take full width if wrapped */
+      text-align: center; /* Center '...' */
+  }
+}

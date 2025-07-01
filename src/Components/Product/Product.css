@@ -1,0 +1,960 @@
+.product-page {
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #ffffff;
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal scroll during transitions */
+}
+
+/* Class added to body when AI chat is open to prevent main page scroll */
+.ai-chat-open-body {
+  overflow: hidden;
+  height: 100vh; /* Prevent scroll on the body itself */
+}
+
+.product-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+}
+/* Image Gallery */
+.image-gallery {
+  display: flex;
+  gap: 1rem;
+}
+.thumbnail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 80px;
+}
+.thumbnail {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.thumbnail.active {
+  border-color: #333;
+}
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.main-image-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.main-image {
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
+  flex: 1;
+}
+.main-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  object-fit: cover;
+}
+
+/* --- START OF MODIFIED SHIPPING INFO SECTION --- */
+.shipping-info {
+  background: #f8f9fa; /* You might need to add a wrapper div with this class in JSX */
+  padding: 1rem; /* You might need to add a wrapper div with this class in JSX */
+  border-radius: 8px; /* You might need to add a wrapper div with this class in JSX */
+}
+
+.shipping-item {
+  display: flex;
+  align-items: center; /* Vertically center icon and text */
+  justify-content: flex-start; /* Align items to the start, not spaced out */
+  gap: 0.5rem; /* Reduced gap between icon and text */
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #333; /* Ensure text color is dark for readability */
+}
+
+.shipping-item:last-child {
+  margin-bottom: 0;
+}
+
+/* If you have a specific class for the icon in JSX, like 'shipping-icon' */
+.shipping-icon {
+  color: #666; /* Adjust icon color if needed */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.shipping-item strong {
+  font-weight: 600; /* Make bold text slightly bolder */
+  color: #333; /* Ensure bold text is clearly visible */
+}
+
+.shipping-item span {
+    line-height: 1.2; /* Adjust line-height for text */
+}
+/* --- END OF MODIFIED SHIPPING INFO SECTION --- */
+
+
+/* Product Details */
+.product-details {
+  padding: 1rem 0;
+}
+.brand {
+  font-size: 0.875rem;
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+.product-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+}
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.stars {
+  display: flex;
+  gap: 2px;
+}
+.star {
+  color: #ddd;
+}
+.star.filled {
+  color: #fbbf24;
+  fill: #fbbf24;
+}
+.rating-text {
+  font-size: 0.875rem;
+  color: #666;
+}
+.price-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.current-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+.original-price {
+  font-size: 1.125rem;
+  color: #999;
+  text-decoration: line-through;
+}
+.discount-badge {
+  background: #ef4444;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.viewers {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+/* --- REVISED COUNTDOWN SECTION --- */
+.countdown {
+  margin-bottom: 1rem;
+  background-color: #ffe6e6;
+  border: 1px solid #ffcccc;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.countdown-text {
+  color: #ef4444;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.countdown-timer {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  font-size: 1.2rem; /* Base font size for all numbers and colons */
+  line-height: 1;
+}
+
+.time-unit {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  min-width: unset;
+  text-align: center;
+  font-weight: normal;
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-number {
+  font-weight: 700;
+  font-size: 1em;
+  color: #ef4444;
+  line-height: 1;
+}
+
+.time-unit + .time-unit::before {
+  content: ':';
+  color: #ef4444;
+  font-weight: bold;
+  font-size: 1em;
+  margin: 0 0.2rem;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.countdown-timer .time-unit:first-child::before {
+    content: none;
+}
+/* --- END OF REVISED COUNTDOWN SECTION --- */
+
+
+.stock-info {
+  margin-bottom: 2rem;
+}
+.stock-bar {
+  width: 100%;
+  height: 4px;
+  background: #f0f0f0;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+.stock-fill {
+  height: 100%;
+  background: #ef4444;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+.stock-text {
+  color: #ef4444;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.product-options {
+  margin-bottom: 2rem;
+}
+.size-section,
+.color-section,
+.quantity-section {
+  margin-bottom: 1.5rem;
+}
+.size-section label,
+.color-section label,
+.quantity-section label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+.size-options {
+  display: flex;
+  gap: 0.5rem;
+}
+.size-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.size-btn.active {
+  background: #333;
+  color: white;
+  border-color: #333;
+}
+.size-btn:hover:not(.active) {
+  border-color: #999;
+}
+.color-options {
+  display: flex;
+  gap: 0.5rem;
+}
+.color-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.color-btn.active {
+  border-color: #333;
+  transform: scale(1.1);
+}
+.color-btn:hover:not(.active) {
+  border-color: #999;
+}
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: fit-content;
+}
+.quantity-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #666;
+}
+.quantity-btn:first-child {
+  border-right: 1px solid #ddd;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.quantity-btn:last-child {
+  border-left: 1px solid #ddd;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.quantity-btn:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+.quantity-value {
+  font-weight: 500;
+  min-width: 50px;
+  text-align: center;
+  padding: 0 1rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+.buy-button {
+  width: 100%;
+  background: #fbbf24;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+.buy-button:hover {
+  background: #f59e0b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+}
+/* Buy Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+.popup-content {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+.popup-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.popup-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+.popup-close:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+.popup-body {
+  margin-bottom: 1.5rem;
+}
+.popup-product {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.popup-product img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.popup-details {
+  flex: 1;
+}
+.popup-details h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+.popup-details p {
+  margin: 0.25rem 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+.popup-price {
+  font-weight: 600;
+  color: #333 !important;
+  font-size: 1.1rem !important;
+}
+.popup-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+.continue-shopping {
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.continue-shopping:hover {
+  background: #e5e5e5;
+  border-color: #999;
+}
+.view-cart {
+  background: #fbbf24;
+  color: #92400e;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.view-cart:hover {
+  background: #f59e0b;
+  transform: translateY(-1px);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-page {
+    padding: 1rem;
+  }
+  .product-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  .image-gallery {
+    flex-direction: column-reverse;
+  }
+  .main-image-container {
+    order: 2;
+  }
+  .thumbnail-list {
+    flex-direction: row;
+    width: auto;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    order: 1;
+  }
+  .main-image img {
+    min-height: 400px;
+  }
+  .product-title {
+    font-size: 1.5rem;
+  }
+  .current-price {
+    font-size: 1.25rem;
+  }
+  /* Responsive for countdown bar */
+  .countdown {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem;
+  }
+  .countdown-text {
+    margin-bottom: 0.5rem;
+  }
+  .size-options {
+    flex-wrap: wrap;
+  }
+  /* AI Chat button responsive */
+  .ai-chat-wrapper {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .ai-chat-button {
+    padding: 0.75rem; /* Smaller padding for mobile */
+    width: 50px;
+    height: 50px;
+  }
+  .ai-chat-button svg {
+    width: 20px;
+    height: 20px;
+  }
+  .ai-chat-fullpage {
+    padding: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  /* Responsive for countdown bar on very small screens */
+  .countdown {
+    padding: 0.5rem;
+  }
+  .time-number {
+    font-size: 0.9em;
+  }
+  .time-unit + .time-unit::before {
+    font-size: 0.9em;
+  }
+}
+
+/* --- START OF AI CHAT STYLES --- */
+.ai-chat-wrapper {
+  position: fixed;
+  top: 2rem; /* Adjusted to top right */
+  right: 2rem; /* Adjusted to top right */
+  z-index: 1000;
+  transition: all 0.5s ease-in-out; /* Smooth transition for expansion */
+  display: flex;
+  align-items: flex-end; /* Align button to bottom right */
+  justify-content: flex-end; /* Align button to bottom right */
+}
+
+/* State when AI chat is open (full page) */
+.ai-chat-wrapper-open {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0; /* Remove border-radius when full screen */
+}
+
+/* Styles for the "Ask AI" button based on Figma */
+.ai-chat-button {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 17.6747px 35.3494px; /* Figma padding */
+  gap: 9.43px; /* Figma gap */
+
+  width: 210.77px; /* Figma width */
+  height: 58.86px; /* Figma height */
+
+  /* Figma Background Gradient */
+  background: radial-gradient(60.91% 217.89% at 49.73% 100%, rgba(254, 199, 255, 0.45) 0%, rgba(160, 131, 247, 0) 100%),
+              radial-gradient(50.19% 67.5% at 49.73% 50%, #FBC75E 0%, #F1C40F 100%);
+  background-blend-mode: plus-lighter, normal;
+
+  /* Figma Box Shadows */
+  box-shadow: 0px 8px 6.48072px rgba(255, 255, 255, 0.1),
+              0px 3.53494px 35.3494px rgba(255, 255, 255, 0.3),
+              /* 0px 4.71325px 4.71325px rgba(91, 0, 255, 0.08),
+              0px 9.4265px 18.853px rgba(209, 205, 216, 0.12),
+              0px 42.4193px 37.706px rgba(39, 0, 157, 0.21), */
+              inset 0px 0px 9.4265px rgba(255, 255, 255, 0.5),
+              inset 0px -2.35663px 3.7706px rgba(255, 255, 255, 0.1),
+              inset 0px 0px 14.1398px #FFFFFF,
+              inset 0px -28.2795px 37.706px rgba(255, 255, 255, 0.22),
+              inset 0px 9.4265px 28.2795px rgba(255, 255, 255, 0.24);
+  border-radius: 35.3494px; /* Figma border-radius */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Keep transition for hover effects */
+  /* flex: none; order: 0; flex-grow: 0; These are from Figma auto-layout, often not needed for fixed position */
+}
+
+.ai-chat-button:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: /* Adjust hover shadow if needed, or keep the complex one */
+    0px 8px 8px rgba(255, 255, 255, 0.15),
+    0px 4px 40px rgba(255, 255, 255, 0.4),
+    0px 5px 5px rgba(91, 0, 255, 0.1),
+    0px 10px 20px rgba(91, 0, 255, 0.15),
+    0px 45px 40px rgba(39, 0, 157, 0.25),
+    inset 0px 0px 10px rgba(255, 255, 255, 0.6),
+    inset 0px -3px 4px rgba(255, 255, 255, 0.15),
+    inset 0px 0px 16px #FFFFFF,
+    inset 0px -30px 40px rgba(255, 255, 255, 0.25),
+    inset 0px 10px 30px rgba(255, 255, 255, 0.28);
+}
+
+.ai-chat-button:active {
+  transform: translateY(0); /* Reset on click */
+  box-shadow: /* Adjust active shadow if needed */
+    0px 4px 3px rgba(255, 255, 255, 0.05),
+    0px 2px 20px rgba(255, 255, 255, 0.2),
+    0px 2px 2px rgba(91, 0, 255, 0.04),
+    0px 5px 10px rgba(91, 0, 255, 0.08),
+    0px 20px 20px rgba(39, 0, 157, 0.15),
+    inset 0px 0px 5px rgba(255, 255, 255, 0.3),
+    inset 0px -1px 2px rgba(255, 255, 255, 0.05),
+    inset 0px 0px 8px #FFFFFF,
+    inset 0px -15px 20px rgba(255, 255, 255, 0.15),
+    inset 0px 5px 15px rgba(255, 255, 255, 0.12);
+}
+
+.ai-chat-button-text {
+  font-family: 'Inter', sans-serif; /* Ensure Inter font is used */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18.853px; /* Figma font size */
+  line-height: 23px; /* Figma line height */
+  color: #FFAB00; /* Figma text color */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.ai-chat-sparkle-icon {
+  width: 24.65px; /* Figma width */
+  height: 23.51px; /* Figma height */
+  color: white; /* White color for the sparkles */
+  /* The Figma "Vector" had a background and rotation, but for Lucide Sparkle,
+     we just need to set the color. */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.ai-chat-sparkle-icon.second-sparkle {
+    width: 18px; /* Smaller size for the second sparkle */
+    height: 18px;
+    margin-left: -5px; /* Adjust position relative to the first sparkle */
+    opacity: 0.8; /* Slightly less prominent */
+}
+
+
+.ai-chat-fullpage {
+  background-color: white;
+  width: 90%; /* Max width for the chat interface */
+  max-width: 700px; /* A reasonable max-width for the chat window */
+  height: 90%; /* Max height for the chat interface */
+  max-height: 800px; /* A reasonable max-height */
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden; /* Hide scrollbars if content overflows */
+}
+
+.ai-chat-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background 0.2s;
+  z-index: 1; /* Ensure it's above chat content */
+}
+
+.ai-chat-close-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.ai-chat-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.ai-chat-content {
+  flex-grow: 1; /* Allows chat messages to take available space */
+  overflow-y: auto; /* Enable scrolling for chat messages */
+  padding-right: 10px; /* Space for scrollbar */
+  margin-bottom: 1rem;
+  display: flex; /* To arrange messages vertically */
+  flex-direction: column;
+}
+
+.ai-chat-message {
+  background-color: #f0f0f0;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  max-width: 80%;
+  line-height: 1.4;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.ai-chat-message-user {
+  background-color: #e6f7ff; /* Light blue for user messages */
+  align-self: flex-end; /* Align to the right */
+  margin-left: auto; /* Push to right */
+}
+
+.ai-chat-message-ai {
+  background-color: #f0f0f0; /* Light gray for AI messages */
+  align-self: flex-start; /* Align to the left */
+  margin-right: auto; /* Push to left */
+}
+
+.ai-chat-input-area {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.ai-chat-input {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.ai-chat-input:focus {
+  outline: none;
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2);
+}
+
+.ai-chat-send-btn {
+  background-color: #fbbf24;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.ai-chat-send-btn:hover {
+  background-color: #f59e0b;
+}
+
+/* --- END OF AI CHAT STYLES --- */
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-page {
+    padding: 1rem;
+  }
+  .product-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  .image-gallery {
+    flex-direction: column-reverse;
+  }
+  .main-image-container {
+    order: 2;
+  }
+  .thumbnail-list {
+    flex-direction: row;
+    width: auto;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    order: 1;
+  }
+  .main-image img {
+    min-height: 400px;
+  }
+  .product-title {
+    font-size: 1.5rem;
+  }
+  .current-price {
+    font-size: 1.25rem;
+  }
+  /* Responsive for countdown bar */
+  .countdown {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem;
+  }
+  .countdown-text {
+    margin-bottom: 0.5rem;
+  }
+  .size-options {
+    flex-wrap: wrap;
+  }
+  /* AI Chat button responsive */
+  .ai-chat-wrapper {
+    top: 1rem; /* Adjusted for mobile */
+    right: 1rem; /* Adjusted for mobile */
+    border: none;
+  }
+  .ai-chat-button {
+    width: 180px; /* Adjust button size for mobile if needed */
+    height: 50px;
+    padding: 10px 20px;
+    font-size: 0.9rem; /* Smaller font for text */
+  }
+  .ai-chat-button-text {
+    font-size: 0.9rem;
+    border: none;
+  }
+  .ai-chat-sparkle-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .ai-chat-sparkle-icon.second-sparkle {
+    width: 15px;
+    height: 15px;
+  }
+  .ai-chat-fullpage {
+    padding: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  /* Responsive for countdown bar on very small screens */
+  .countdown {
+    padding: 0.5rem;
+  }
+  .time-number {
+    font-size: 0.9em;
+  }
+  .time-unit + .time-unit::before {
+    font-size: 0.9em;
+  }
+  .ai-chat-wrapper {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+  .ai-chat-button {
+    width: 150px; /* Even smaller button for very small screens */
+    height: 45px;
+    padding: 8px 15px;
+  }
+  .ai-chat-button-text {
+    font-size: 0.8rem;
+  }
+  .ai-chat-sparkle-icon {
+    width: 18px;
+    height: 18px;
+  }
+  .ai-chat-sparkle-icon.second-sparkle {
+    width: 13px;
+    height: 13px;
+  }
+}
+/* overwrite the browser’s default border  */
+.ai-chat-button {
+  border: 0;                 /* ← or use 1px solid transparent */
+  outline: none;             /* kill the focus ring if you don’t want it */
+  background-clip: padding-box; /* keeps the gradient inside the rounded pill */
+}
+
+/* if you still want a visible focus style, add one yourself */
+.ai-chat-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(251,191,36,.45); /* subtle golden focus ring */
+}

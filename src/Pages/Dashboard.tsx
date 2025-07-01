@@ -12,7 +12,6 @@ import UserProfileForm from "../Components/UserProfile/UserProfile.tsx"; // Impo
 import ProductList from "../Components/Products/ProductList.tsx";
 import Delivery from "../Components/Delivery/Delivery.tsx";
 import RiskDashboard from "../Components/RiskDashboard/RiskDashboard.tsx";
-
 interface DashboardProps {
   // Add any props you need for the dashboard
 }

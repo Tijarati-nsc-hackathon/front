@@ -8,7 +8,6 @@ function Pricing() {
       name: 'Starter',
       price: '$18',
       period: '/month',
-      description: 'Unleash the power of automation.',
       features: [
         'Multi-step Zaps',
         '3 Premium Apps',
@@ -22,7 +21,6 @@ function Pricing() {
       name: 'Professional',
       price: '$54',
       period: '/month',
-      description: 'Advanced tools to take your work to the next level.',
       features: [
         'Multi-step Zaps',
         'Unlimited Premium',
@@ -37,7 +35,6 @@ function Pricing() {
       name: 'Company',
       price: '$89',
       period: '/month',
-      description: 'Automation plus enterprise-grade features.',
       features: [
         'Multi-step Zaps',
         'Unlimited Premium',
@@ -79,7 +76,6 @@ function Pricing() {
                     <span className="period">{plan.period}</span>
                   </div>
                   <h3 className="plan-name">{plan.name}</h3>
-                  <p className="plan-description">{plan.description}</p>
                 </div>
 
                 <div className="features-section">

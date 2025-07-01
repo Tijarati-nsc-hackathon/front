@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight,User } from "lucide-react";
 import { riskData, clients } from "./data";
 import "./RiskDashboard.css";
 
@@ -158,7 +158,9 @@ const RiskDashboard: React.FC<RiskDashboardProps> = ({
           {currentClients.map(({ id, name, device, riskLevel }) => (
             <div key={id} className="client-item">
               <div className="client-info">
-                <div className="avatar" />
+                <div className="avatar">
+                  <User size={24} className="avatar-icon" /> {/* Added User icon */}
+                </div>
                 <div>
                   <div className="client-name">{name}</div>
                   <div className="device">{device}</div>

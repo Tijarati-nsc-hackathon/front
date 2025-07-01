@@ -1,6 +1,10 @@
 import Navbar from "./Container/Navbar.tsx";
 import Footer from "./Components/Footer/Footer.tsx";
 import Dashboard from "./Pages/Dashboard.tsx";
+import Product from './Components/Product/Product.tsx'
+import Payment from './Components/Payment/Payment.tsx'
+
+
 import {
   BrowserRouter,
   Outlet,
@@ -76,6 +80,12 @@ function App() {
           {/* Dashboard route without Navbar */}
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
+          </Route>
+          <Route path="/product" element={<DashboardLayout />}>
+            <Route index element={<Product />} />
+          </Route>
+          <Route path="/payment" element={<DashboardLayout />}>
+            <Route index element={<Payment />} />
           </Route>
         </Routes>
       </ScrollProvider>
