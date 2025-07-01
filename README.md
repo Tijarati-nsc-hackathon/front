@@ -26,7 +26,6 @@ uix figma :https://www.figma.com/design/Uirx0Fy6MQcOWhhQlltPkZ/Tejarati?node-id=
 
 | Layer       | Technology     |
 | ----------- | -------------- |
-| UI Framework | React 18.x     |
 | Routing      | React Router  |
 | State Mgmt   | Context API / Redux (optional) |
 | Auth         | JWT + Axios interceptors |
@@ -36,21 +35,4 @@ uix figma :https://www.figma.com/design/Uirx0Fy6MQcOWhhQlltPkZ/Tejarati?node-id=
 | Backend API  | NestJS @  |
 | Chatbot API  | Flask AI RAG service |
 
----
-
-## 🚀 Getting Started
-
-```bash
-# 1. Clone repo
-git clone https://github.com/your-org/tijarati-frontend.git
-cd tijarati-frontend
-
-# 2. Install dependencies
-pnpm install
-
-# 3. Configure environment variables
-cp .env.example .env
-
-# 4. Run development server
-pnpm dev
 
