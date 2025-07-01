@@ -30,7 +30,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
     console.log('Navigating to Profile');
   };
 
-  const renderContent = (): JSX.Element => {
+  const renderContent = () => {
     switch (activeSection) {
       case 'Dashboard':
         return (

@@ -1,22 +1,48 @@
-import React from "react";
-import { orders } from "./orders.tsx"; // CORRECTED: Use named import for 'orders'
+import React, { useState } from "react";
+import { useApiQuery } from '../../api/useApiCall';
 import "./OrderList.css"; // Import the CSS for this component
 
+// Define the type for a single order (matching orders.tsx)
+export type OrderType = {
+  id: number;
+  customerName: string;
+  product: string;
+  date: string;
+  deliveryAgency: string;
+  paymentStatus: string;
+  contactMethod: string;
+};
+
+// Define the paginated response type
+interface PaginatedResponseDto<T> {
+  data: T[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+}
+
 const LastOrders: React.FC = () => {
-  // Static data for the list of last orders is now imported.
+  const [page, setPage] = useState(1);
+  const limit = 10;
+
+  const { data, isLoading, error } = useApiQuery<PaginatedResponseDto<OrderType>>(
+    ["orders-paginated", page, limit],
+    `/orders/paginated`,
+    { page, limit }
+  );
 
   return (
     <div className="last-orders-container">
       <h3 className="last-orders-title">List of last orders</h3>
+      {isLoading && <div>Loading...</div>}
+      {error && <div>Error loading orders{error instanceof Error ? `: ${error.message}` : ''}</div>}
       <div className="orders-list">
-        {orders?.map((order) => ( // Optional chaining is good practice here
+        {data?.data?.map((order) => (
           <div key={order.id} className="order-item">
             <div className="customer-info">
-              <img
-                src={order.customerImage}
-                alt={order.customerName}
-                className="customer-image"
-              />
               <span className="customer-name">{order.customerName}</span>
             </div>
             <span className="order-product">{order.product}</span>
@@ -35,6 +61,18 @@ const LastOrders: React.FC = () => {
           </div>
         ))}
       </div>
+      {/* Pagination controls (optional) */}
+      {data && (
+        <div className="pagination-controls">
+          <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1}>
+            Previous
+          </button>
+          <span>Page {data.meta.page} of {data.meta.totalPages}</span>
+          <button onClick={() => setPage((p) => Math.min(data.meta.totalPages, p + 1))} disabled={page === data.meta.totalPages}>
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };
