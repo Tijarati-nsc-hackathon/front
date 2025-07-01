@@ -28,24 +28,15 @@ function ScrollToTop() {
 }
 
 
-export const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 1,
-      refetchOnWindowFocus: false,
-    },
-  },
-});
+
 
 // Layout with Navbar and Footer
 function Layout() {
   return (
     <>
-    <QueryClientProvider client={queryClient}>
       <Navbar />
       <Outlet />
       <Footer />
-      </QueryClientProvider>
     </>
   );
 }
@@ -60,8 +51,18 @@ function DashboardLayout() {
 }
 
 function App() {
+  
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: 1,
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
   return (
     <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
       <ScrollProvider>
         <ScrollToTop />
         <Routes>
@@ -78,6 +79,7 @@ function App() {
           </Route>
         </Routes>
       </ScrollProvider>
+      </QueryClientProvider>
     </BrowserRouter>
   );
 }

@@ -1,27 +1,61 @@
 import React from 'react';
-import './Dash.css'; // Import the CSS for this component
+import { useApiQuery } from '../../api/useApiCall';
+import './Dash.css'; 
+
+interface SummaryResponse {
+  totalPrice: number;
+  totalOrders: number;
+  highRiskOrder: number;
+}
 
 const Dash: React.FC = () => {
+  const shopId = '1'; 
+  
+  const { data: summaryData, isLoading, error } = useApiQuery<SummaryResponse>(
+    ['summary', shopId],
+    `summary/${shopId}`
+  );
+
+  if (isLoading) {
+    return (
+      <div className="summary-cards-container">
+        <div className="summary-card">
+          <div className="card-details">
+            <span className="card-label">Loading...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="summary-cards-container">
+        <div className="summary-card">
+          <div className="card-details">
+            <span className="card-label">Error loading data</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="summary-cards-container">
-      {/* Card 1: Total Revenue Collected */}
       <div className="summary-card">
         <div className="icon-circle green-light">
-          {/* SVG for money bag icon */}
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-svg">
             <path d="M12 20v-6M12 10V4M18 6H6M21 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"></path>
           </svg>
         </div>
         <div className="card-details">
           <span className="card-label">Total Revenue Collected</span>
-          <span className="card-value">2,530,000 DZD</span>
+          <span className="card-value">{summaryData?.totalPrice?.toLocaleString() || '0'} DZD</span>
         </div>
       </div>
 
-      {/* Card 2: Total Orders */}
       <div className="summary-card">
         <div className="icon-circle blue-light">
-          {/* SVG for shopping bag icon */}
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-svg">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -30,14 +64,12 @@ const Dash: React.FC = () => {
         </div>
         <div className="card-details">
           <span className="card-label">Total Orders</span>
-          <span className="card-value">1,250</span>
+          <span className="card-value">{summaryData?.totalOrders?.toLocaleString() || '0'}</span>
         </div>
       </div>
 
-      {/* Card 3: Predicted High-Risk Orders */}
       <div className="summary-card">
         <div className="icon-circle pink-light">
-          {/* SVG for repeat/exchange icon */}
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-svg">
             <polyline points="17 1 21 5 17 9"></polyline>
             <path d="M21 5H3a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"></path>
@@ -45,7 +77,7 @@ const Dash: React.FC = () => {
         </div>
         <div className="card-details">
           <span className="card-label">Predicted High-Risk Orders</span>
-          <span className="card-value">76 Orders</span>
+          <span className="card-value">{summaryData?.highRiskOrder || '0'} Orders</span>
         </div>
       </div>
     </div>

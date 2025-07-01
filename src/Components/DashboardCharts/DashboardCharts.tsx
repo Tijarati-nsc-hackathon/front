@@ -6,7 +6,6 @@ import {
 import { ordersData, returnRateData } from './ChartData.tsx'; // CORRECTED: Import multiple named exports in one go
 
 const DashboardCharts: React.FC = () => { // Changed to React.FC for consistency
-  // Data is now imported from ChartData.tsx, so we don't define it here anymore.
 
   return (
     <div style={{ display: 'flex', gap: '20px', padding: '20px' }}>
