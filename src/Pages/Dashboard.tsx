@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Sidebar from '../Components/Sidebar/Sidebar.tsx';  
+import Sidebar from '../Components/Sidebar/Sidebar.tsx';
 import Dah from '../Components/Dashboard/Dash.tsx';
 import Section from '../Components/Section/Section.tsx'; // Import the renamed Section component
 import './CSS/Dashboard.css';
@@ -7,6 +7,10 @@ import DashboardCharts from '../Components/DashboardCharts/DashboardCharts.tsx';
 import image from '../Components/assets/dashboard_image.png';
 import OrderList from '../Components/OrderList/OrderList.tsx';
 import Preferences from '../Components/Preferences/Preferences.tsx';
+import UserProfileForm from '../Components/UserProfile/UserProfile.tsx'; // Import your profile form
+import ProductList from '../Components/Products/ProductList.tsx';
+import Delivery from '../Components/Delivery/Delivery.tsx';
+import RiskDashboard from '../Components/RiskDashboard/RiskDashboard.tsx'
 
 interface DashboardProps {
   // Add any props you need for the dashboard
@@ -21,7 +25,12 @@ const Dashboard: React.FC<DashboardProps> = () => {
     // Here you can add routing logic or state management
   };
 
-  const renderContent = () => {
+  const handleProfileClick = (): void => {
+    setActiveSection('Profile');
+    console.log('Navigating to Profile');
+  };
+
+  const renderContent = (): JSX.Element => {
     switch (activeSection) {
       case 'Dashboard':
         return (
@@ -44,22 +53,20 @@ const Dashboard: React.FC<DashboardProps> = () => {
       case 'Delivery Insights':
         return (
           <div className="dashboard__content">
-            <h1>Delivery Insights</h1>
-            <p>View delivery analytics and insights</p>
+            <RiskDashboard/>
           </div>
         );
-      case 'Products':
-        return (
-          <div className="dashboard__content">
-            <h1>Products</h1>
-            <p>Manage your products catalog</p>
+        case 'Products':
+          return (
+            <div className="dashboard__content">
+            <ProductList/>
           </div>
         );
-      case 'Track Delivery':
-        return (
-          <div className="dashboard__content">
-            <h1>Track Delivery</h1>
-            <p>Track your deliveries in real-time</p>
+        case 'Track Delivery':
+          return (
+            <div className="dashboard__content">
+            <Delivery/>
+            
           </div>
         );
       case 'Setting':
@@ -67,6 +74,12 @@ const Dashboard: React.FC<DashboardProps> = () => {
           <div className="dashboard__content">
             <h1>Preferences</h1>
            <Preferences/>
+          </div>
+        );
+      case 'Profile':
+        return (
+          <div className="dashboard__content">
+            <UserProfileForm/>
           </div>
         );
       default:
@@ -110,7 +123,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
               <div className="icon-button">⚙️</div> {/* Settings icon */}
               <div className="icon-button">🔔</div> {/* Notification icon */}
             </div>
-            <div className="user-profile">
+            <div className="user-profile" onClick={handleProfileClick}>
               <img src={image} alt="User Profile" className="profile-picture" /> {/* Profile picture */}
             </div>
           </div>

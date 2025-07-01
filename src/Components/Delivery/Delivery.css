@@ -1,0 +1,235 @@
+/* Main Container */
+.delivery-list-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Title */
+.delivery-list-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+/* Delivery Items List */
+.delivery-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* Delivery Item */
+.delivery-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #fcfcfc;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: background-color 0.2s ease;
+}
+
+.delivery-item:hover {
+    background-color: #f5f5f5;
+}
+
+/* Delivery Info Section */
+.delivery-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 2;
+    min-width: 200px;
+}
+
+.delivery-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.delivery-name {
+    font-weight: 500;
+    color: #333;
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Delivery Fields */
+.delivery-field {
+    flex: 1;
+    text-align: center;
+    min-width: 80px;
+}
+
+.delivery-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.delivery-value {
+    font-size: 0.95rem;
+    color: #333;
+    font-weight: 400;
+}
+
+.delivery-price {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Status Styles */
+.delivery-status {
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-onhold {
+    background-color: #F1C40F;
+    color: #fff;
+}
+
+.status-arrived {
+    background-color: #6DD130;
+    color: #fff;
+}
+
+.status-canceled {
+    background-color: #FE5C73;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .delivery-item {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+    
+    .delivery-info {
+        flex-basis: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .delivery-field {
+        flex-basis: auto;
+        min-width: unset;
+        width: auto;
+        text-align: left;
+        padding: 0.2rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .delivery-list-container {
+        padding: 1rem;
+    }
+    
+    .delivery-list-title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .delivery-item {
+        padding: 0.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+    
+    .delivery-info {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .delivery-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .delivery-name {
+        font-size: 0.9rem;
+    }
+    
+    .delivery-field {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: 0.3rem 0;
+        border-bottom: 1px solid #f0f2f5;
+    }
+    
+    .delivery-field:last-child {
+        border-bottom: none;
+    }
+    
+    .delivery-label {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+    
+    .delivery-value {
+        font-size: 0.85rem;
+    }
+
+    .delivery-status {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .delivery-list-container {
+        margin-top: 1rem;
+    }
+    
+    .delivery-item {
+        padding: 0.6rem;
+    }
+    
+    .delivery-info {
+        gap: 0.8rem;
+    }
+    
+    .delivery-image {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .delivery-name {
+        font-size: 0.85rem;
+    }
+    
+    .delivery-label {
+        font-size: 0.75rem;
+    }
+    
+    .delivery-value {
+        font-size: 0.8rem;
+    }
+}
