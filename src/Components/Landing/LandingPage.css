@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+
+
+.landing-section {
+  width: 100%;
+  background-color: #FEFCF3;
+  min-height: calc(100vh - 80px);
+  padding: 0;
+  position: relative;
+    background: linear-gradient(to right, #fffdf6, #fdf7e9);
+
+}
+
+.landing-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 3rem;
+  height: 100%;
+}
+
+.landing-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  height: 100%;
+  min-height: 600px;
+}
+
+.landing-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-right: 2rem;
+}
+
+.landing-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 5.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--Black);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.landing-underline {
+  width: 280px;
+  height: 8px;
+  background-color: var(--Yellow);
+  border-radius: 4px;
+  margin: -1rem 0 1rem 0;
+}
+
+.landing-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--Grey);
+  margin: 0;
+  max-width: 500px;
+}
+
+.landing-cta-button {
+  background-color: var(--Yellow);
+  border: none;
+  color: var(--Black);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1.2rem 2.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(241, 196, 15, 0.3);
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.landing-cta-button:hover {
+  background-color: #E6B800;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(241, 196, 15, 0.4);
+}
+
+.landing-right {
+  position: relative;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yellow-background-shape {
+  position: absolute;
+  width: 400px;
+  height: 520px;
+  background: linear-gradient(135deg, var(--Yellow) 0%, #F39C12 100%);
+  border-radius: 30px;
+  z-index: 1;
+  transform: rotate(-3deg);
+  box-shadow: 0 20px 60px rgba(241, 196, 15, 0.3);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-3deg);
+}
+
+.hero-woman {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.woman-image {
+  width: 300px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.payment-card {
+  position: absolute;
+  background: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  z-index: 3;
+  font-family: 'Inter', sans-serif;
+}
+
+.top-payment {
+  left: -60px;
+  transform: rotate(-8deg);
+}
+
+
+.bottom-payment {
+  bottom: 60px;
+  right: -70px;
+  transform: rotate(-1deg);
+}
+
+.payment-amount {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--Black);
+}
+
+.edahabya-card {
+  position: absolute;
+  bottom: 20px;
+  right: -50px;
+  z-index: 3;
+  transform: rotate(15deg);
+}
+
+.card-image {
+  width: 220px;
+  height: 140px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+.static-icon {
+  position: absolute;
+  z-index: 4;
+}
+
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icon-circle.blue {
+  background: var(--Blue);
+}
+
+.icon-circle.yellow {
+  background: var(--Yellow);
+  color: var(--Black);
+}
+
+.icon-circle.peach {
+  background: var(--Peach);
+  color: var(--Black);
+}
+
+.icon-circle.blue-dark {
+  background: #2c3e50;
+}
+
+.icon-1 {
+  top: 30px;
+  right: 60px;
+}
+
+.icon-2 {
+  top: 10px;
+  right: 10px;
+}
+
+.icon-3 {
+  bottom: 180px;
+  left: -40px;
+}
+
+.icon-4 {
+  top: 160px;
+  left: 0px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .landing-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .landing-left {
+    padding-right: 0;
+    align-items: center;
+  }
+  
+  .landing-title {
+    font-size: 4.2rem;
+  }
+  
+  .landing-underline {
+    align-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  .landing-title {
+    font-size: 3.2rem;
+  }
+  
+  .landing-description {
+    font-size: 1.1rem;
+  }
+  
+  .landing-underline {
+    width: 200px;
+    height: 6px;
+  }
+}
+
+/* Base styles for all payment cards */
+.payment-card {
+    background-color: #ffffff; /* White background */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
+    padding: 15px 20px; /* Internal padding */
+    font-family: 'Inter', sans-serif; /* Consistent font */
+    position: absolute; /* To allow floating positioning */
+    z-index: 5; /* Ensure they appear above background elements */
+    /* Add animation if desired, similar to other floating elements */
+    animation: float 6s ease-in-out infinite; /* Reuse float animation */
+}
+
+/* Style for the "Total Income" card (bottom-payment in your example) */
+.payment-card.bottom-payment {
+    width: 180px; /* Fixed width based on visual */
+    text-align: left;
+    transform: rotate(-5deg); /* Slight rotation */
+    /* Positioning - example values, adjust as needed in your JSX/TSX */
+    /* bottom: 15%; */
+    /* left: 10%; */
+}
+
+.bottom-payment .payment-label {
+    font-size: 13px;
+    color: #888888; /* Lighter gray for the label */
+    margin-bottom: 4px;
+    display: block; /* Ensures it takes full width */
+}
+
+.bottom-payment .payment-amount {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333; /* Darker text for the amount */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* To push graph icon to the right */
+}
+
+.bottom-payment .graph-icon {
+    width: 25px; /* Size of the graph icon */
+    height: 15px; /* Height of the graph icon */
+    /* SVG for the small bar graph icon */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fbbf24' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='4' y1='18' x2='4' y2='6'%3E%3C/line%3E%3Cline x1='12' y1='18' x2='12' y2='10'%3E%3C/line%3E%3Cline x1='20' y1='18' x2='20' y2='14'%3E%3C/line%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 8px; /* Space between amount and graph */
+}
+
+
+/* Style for the "Enter amount / Send" card (top-payment in your example) */
+.payment-card.top-payment {
+    width: 280px; /* Fixed width based on visual */
+    text-align: left;
+    transform: rotate(2deg); /* Slight rotation */
+    top: 0px;
+     right: 15%;
+     position: absolute;
+}
+
+.top-payment .payment-label {
+    font-size: 13px;
+    color: #888888;
+    display: block;
+}
+
+.top-payment .input-and-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #e0e0e0; /* Subtle line under the input/button group */
+    padding-bottom: 5px; /* Space between content and the line */
+}
+
+.top-payment .payment-amount-input {
+    flex-grow: 1; /* Allows it to take available space */
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+    border: none; /* No border for input field itself */
+    padding: 0; /* No padding for input field to fit visual */
+    outline: none; /* Remove focus outline */
+    background: transparent; /* Transparent background */
+    width: 100%; /* Occupy available space */
+    padding-top: 5px; /* Add some top padding to align with button */
+}
+
+.top-payment .send-button {
+    background-color: #fbbf24; /* Yellow background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 8px; /* Slightly more rounded than the card */
+    padding: 8px 15px; /* Padding for button */
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0; /* Prevents button from shrinking */
+}
+
+.top-payment .send-button:hover {
+    background-color: #f59e0b; /* Darker yellow on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .payment-card.bottom-payment {
+        width: 150px;
+        /* font-size: 16px; - removed as it's for parent, not directly amount */
+    }
+    .payment-card.top-payment {
+        width: 250px;
+        /* font-size: 16px; - removed as it's for parent, not directly input */
+    }
+    .bottom-payment .payment-amount {
+        font-size: 16px;
+    }
+    .top-payment .payment-amount-input {
+        font-size: 16px;
+    }
+    .top-payment .send-button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
