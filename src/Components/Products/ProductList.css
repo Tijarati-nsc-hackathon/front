@@ -209,3 +209,174 @@
         font-size: 0.8rem;
     }
 }
+/* Product Actions Container */
+.product-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Base Action Button Styling */
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+/* Edit Button Styling */
+.edit-btn {
+  color: #374151;
+}
+
+.edit-btn:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+/* Delete Button Styling */
+.delete-btn {
+  color: #ef4444;
+}
+
+.delete-btn:hover {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+/* SVG Icon Styling */
+.action-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .product-item {
+    gap: 16px;
+  }
+  
+  .product-field {
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-list-container {
+    padding: 16px;
+  }
+  
+  .product-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .product-info {
+    min-width: auto;
+    justify-content: flex-start;
+  }
+  
+  .product-field {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: auto;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .product-field:last-child {
+    margin-left: 0;
+    border-bottom: none;
+    justify-content: center;
+  }
+  
+  .field-label {
+    margin-bottom: 0;
+  }
+  
+  .product-actions {
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  .action-btn {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .action-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-list-title {
+    font-size: 20px;
+  }
+  
+  .product-image {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .product-name {
+    font-size: 13px;
+  }
+  
+  .field-value {
+    font-size: 13px;
+  }
+}
+/* Keep your existing styles, just modify these parts: */
+
+.product-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #fcfcfc;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: background-color 0.2s ease;
+    gap: 1rem;
+    /* Remove justify-content: space-between */
+}
+
+/* Actions field - push only this to the end */
+.product-field:last-child {
+    margin-left: auto; /* This pushes only the actions to the right */
+    flex: 0 0 auto;
+    text-align: right;
+}
+
+/* Remove the field label for actions to clean it up */
+.product-field:last-child .field-label {
+    display: none; /* Hide the "Actions" label if you have one */
+}
+
+/* Keep actions container as is */
+.product-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
