@@ -16,6 +16,7 @@ const Navbar: React.FC = () => {
           <button onClick={() => scrollTo('BenefitsSection')} className="navbar-link">Benefits</button>
           {/* Corrected the key to 'AboutUs' to match the SectionKey type */}
           <button onClick={() => scrollTo('AboutUs')} className="navbar-link">About Us</button>
+          <button onClick={() => scrollTo('Pricing')} className="navbar-link">Pricing</button>
         </div>
 
         <div className="navbar-actions">

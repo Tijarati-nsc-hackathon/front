@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useRef, useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom'; // Import useNavigate and useLocation
 
-type SectionKey = 'home' | 'support' | 'Testimonials' | 'BenefitsSection' | 'AboutUs';
+type SectionKey = 'home' | 'support' | 'Testimonials' | 'BenefitsSection' | 'AboutUs'|'Pricing';
 
 type ScrollRefs = {
   [key in SectionKey]: React.RefObject<HTMLDivElement>;
@@ -31,6 +31,7 @@ export const ScrollProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     Testimonials: useRef(null),
     BenefitsSection: useRef(null),
     AboutUs: useRef(null),
+    Pricing: useRef(null),
   };
 
   const scrollTo = (key: SectionKey) => {

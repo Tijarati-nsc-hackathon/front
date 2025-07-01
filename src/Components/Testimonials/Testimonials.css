@@ -5,8 +5,13 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 60px 40px;
+  
+  ;
 }
+.testimonials-section{
+  background: #fff8f8;
 
+}
 .testimonials-header {
   display: flex;
   justify-content: space-between;
